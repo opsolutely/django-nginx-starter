@@ -1,0 +1,59 @@
+# C extensions
+.*
+.#*
+\#*#
+*~
+bypass_*
+*.so
+*.pyc
+*.swp
+
+# Packages
+*.egg
+*.egg-info
+distbuild
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Do include .gitignore files for subdirectories
+!.gitignore
+
+# for local development
+virtualenv
+venv/
+githooks/
+collectstatic/
+*.db
+*.db-journal
+*.log
+*.pid
+
+# some libs create local egg dirs when pip installed
+lib/structable/Structable.egg-info
+
+.DS_Store
+.idea/
+logfile
