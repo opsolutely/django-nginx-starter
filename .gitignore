@@ -57,3 +57,6 @@ lib/structable/Structable.egg-info
 .DS_Store
 .idea/
 logfile
+
+# Secret files
+keys.sh
