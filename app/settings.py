@@ -62,12 +62,17 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+# Project path
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+ROOT_PATH = BASE_DIR = os.path.join(os.path.dirname(__file__), '..')
+
 # The application's base link.
 APP_BASE_LINK = ''
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '..', 'media'))
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -78,14 +83,16 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
-
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
+STATIC_FILES = os.path.join(ROOT_PATH, 'static')
+STATIC_BASE_LINK = APP_BASE_LINK + "/static/"
+EXTRA_CONTEXT = {'static_base': STATIC_BASE_LINK,
+                 'app_base_link': APP_BASE_LINK}
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    os.path.join(ROOT_PATH, 'static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -101,6 +108,15 @@ STATICFILES_FINDERS = (
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '*lsatmymheaq)i+)80ryxau^^#uabdmtw&amp;1qhg9u-*cw_wmepn'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
+)
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -124,7 +140,11 @@ ROOT_URLCONF = 'app.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'app.wsgi.application'
 
+TEMPLATE_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '..', 'templates'))
+
 TEMPLATE_DIRS = (
+    TEMPLATE_DIR,
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -140,6 +160,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_evolution',
     'gunicorn',
+    'static',
+    'templates'
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
