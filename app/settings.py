@@ -181,6 +181,25 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 )
 
+# Configuration for the email backend
+SEND_BROKEN_LINK_EMAILS = True     # email us on all broken links
+THROTTLE_OUTGOING_EMAIL = False
+CACHE_RETRIES = 4
+
+EMAIL_HOST = 'smtp.postmarkapp.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = os.environ.get('email_host_password')
+EMAIL_PORT = 2525
+DEFAULT_FROM_EMAIL = ''
+EMAIL_HOST_PARAMS = {'host': EMAIL_HOST,
+                     'username': EMAIL_HOST_USER,
+                     'password': EMAIL_HOST_PASSWORD,
+                     'fail_silently': False}
+
+EMAIL_SUBJECT_PREFIX = "[%s] " % ''
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # default config by Django but put explicitly
+EMAIL_USE_TLS = True
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
