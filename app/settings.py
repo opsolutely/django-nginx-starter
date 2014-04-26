@@ -172,6 +172,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_evolution',
+    'djsupervisor',
     'gunicorn',
     'static',
     'templates'
