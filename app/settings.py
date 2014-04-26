@@ -14,11 +14,24 @@ DATABASES = {
                     }
 }
 DEBUG = False
+DEBUG_TOOLBAR = False
 
 if ENVIRONMENT == 'dev':
     APP_BASE_LINK = 'http://127.0.0.1:5000'
     DEBUG = True
+    DEBUG_TOOLBAR = True
     DATABASES['default']['NAME'] = 'project_db'
+
+    def custom_show_toolbar(request):
+        return True  # Always show toolbar, for example purposes only.
+
+    DEBUG_TOOLBAR_CONFIG = {
+        'INTERCEPT_REDIRECTS': False,
+        'SHOW_TOOLBAR_CALLBACK': custom_show_toolbar,
+        'HIDE_DJANGO_SQL': False,
+        'TAG': 'div',
+        'ENABLE_STACKTRACES': True,
+    }
 elif ENVIRONMENT == 'production':
     APP_BASE_LINK = ''
     DATABASES['default']['NAME'] = 'project_db'
