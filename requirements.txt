@@ -3,6 +3,7 @@ PyYAML==3.11
 argh==0.24.1
 django-debug-toolbar==1.2
 django-evolution==0.6.9
+django-richenum==1.2.0
 django-supervisor==0.3.2
 enum==0.4.4
 gunicorn==18.0
@@ -12,6 +13,7 @@ pathtools==0.1.2
 pep8==1.4.6
 psycopg2==2.5.2
 pyflakes==0.7.3
+richenum==1.0.5
 simplejson==3.4.0
 sqlparse==0.1.11
 supervisor==3.0
