@@ -27,7 +27,7 @@ RUN wget -O ./remote_syslog.tar.gz https://github.com/papertrail/remote_syslog2/
 # RUN ln -s /opt/code/supervisord.conf /etc/supervisor/conf.d/
 
 # Add requirements and install
-COPY ./docker_files/requirements.txt /opt/code/
+COPY ./requirements.txt /opt/code/
 RUN pip install -r /opt/code/requirements.txt
 
 WORKDIR /opt/code
