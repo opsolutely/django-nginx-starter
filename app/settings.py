@@ -3,16 +3,12 @@ import os
 
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
 
-DATABASES = {
-        'default': {
-                    'NAME': '',
-                    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-                    'USER': '',
-                    'PASSWORD': '',
-                    'HOST': 'localhost',
-                    'PORT': ''
-                    }
-}
+DATABASES = {'default': {'NAME': '',
+                         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                         'USER': '',
+                         'PASSWORD': '',
+                         'HOST': 'localhost',
+                         'PORT': ''}}
 DEBUG = False
 DEBUG_TOOLBAR = False
 
